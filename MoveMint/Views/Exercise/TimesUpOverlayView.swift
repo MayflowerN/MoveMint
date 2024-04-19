@@ -59,7 +59,7 @@ struct TimesUpOverlayView: View {
             //.navigationBarHidden(true)
             .overlay(
                 NavigationLink(
-                    destination: FinishedExerciseView(exerciseName: exerciseName, date: Date()),
+                    destination: FinishedExerciseView(selectedTab: .constant(0), dismissExercisePage: .constant(false), exerciseName: exerciseName, date: Date()),
                     isActive: $navigateToFinishedExerciseView
                 ) {
                     EmptyView()

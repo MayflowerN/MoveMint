@@ -92,7 +92,7 @@ struct ChangePasswordView: View {
                         self.errorMessage = error.localizedDescription
                     } else {
                         // Successfully updated password
-                        print("Password changed successfully!")
+                        debugPrint("Password changed successfully!")
                     }
                 }
             }

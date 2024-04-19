@@ -24,11 +24,17 @@ class ExerciseLog: ObservableObject {
             UserDefaults.standard.set(data, forKey: "recordedExercises")
         }
     }
+    
     func exercises(on date: Date) -> [String]? {
         let dateString = string(from: date)
         return recordedExercises[dateString]
     }
-
+    
+    func firstDate() -> Date {
+        let dates = recordedExercises.keys.compactMap(self.date)
+        
+        return dates.sorted().first ?? Date()
+    }
 
     init() {
         if let data = UserDefaults.standard.data(forKey: "recordedExercises"),

@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct Onboarding_1: View {
-    @EnvironmentObject var viewRouter: ViewRouter
-
+    //@EnvironmentObject var viewRouter: ViewRouter
+    //@State private var path  = NavigationPath()
+    
     var body: some View {
-        
+        NavigationStack {
             VStack(spacing: 20) {
                 HStack {
                     Text("MoveMint")
@@ -35,9 +36,7 @@ struct Onboarding_1: View {
                     .foregroundColor(Color(red: 0.38, green: 0.38, blue: 0.38))
                     .frame(width: 351, alignment: .top)
                 
-                Button(action: {
-                    viewRouter.currentPage = .signupView
-                }) {
+                NavigationLink(destination: Onboarding_2()) {
                     Text("Get Started")
                         .font(Font.custom("Spartan", size: 24).weight(.heavy))
                         .kerning(0.72)
@@ -48,29 +47,38 @@ struct Onboarding_1: View {
                         .background(Color(red: 0.22, green: 0.77, blue: 0.38))
                         .cornerRadius(20)
                         .shadow(color: .black.opacity(0.08), radius: 17.5, x: 0, y: 4)
+                    //                        .navigationDestination(for: String.self) { route in
+                    //                            switch route {
+                    //                            case "Onboarding_2":
+                    //                                Onboarding_2(path: $path)
+                    //                            case "Onboarding_3":
+                    //                                Onboarding_3(path: $path)
+                    //                            case "MainTabView":
+                    //                                MainTabView(path: $path)
+                    //                            default:
+                    //                                EmptyView()
                 }
-
-                
-                HStack(spacing: 5) {
-                    Text("Already have an account?")
-                        .font(Font.custom("Spartan", size: 16))
-                        .kerning(0.48)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(Color(red: 0.38, green: 0.38, blue: 0.38))
-                    
-                    NavigationLink(destination: SignInView()) {
-                        Text("Sign in now")
-                            .font(Font.custom("Spartan", size: 16))
-                            .kerning(0.48)
-                            .foregroundColor(Color.blue)
-                    }
-                }
+            }
             
         }
-        //.navigationBarHidden(true)
-        .padding() // This will give some space around your VStack
+        
+        //                    HStack(spacing: 5) {
+        //                        Text("Already have an account?")
+        //                            .font(Font.custom("Spartan", size: 16))
+        //                            .kerning(0.48)
+        //                            .multilineTextAlignment(.center)
+        //                            .foregroundColor(Color(red: 0.38, green: 0.38, blue: 0.38))
+        //
+        //                        NavigationLink(destination: SignInView()) {
+        //                            Text("Sign in now")
+        //                                .font(Font.custom("Spartan", size: 16))
+        //                                .kerning(0.48)
+        //                                .foregroundColor(Color.blue)
     }
 }
+                    
+              
+  
 
 struct Onboarding_1_Previews: PreviewProvider {
     static var previews: some View {

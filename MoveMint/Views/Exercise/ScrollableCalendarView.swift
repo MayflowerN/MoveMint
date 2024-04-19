@@ -14,7 +14,7 @@ struct ScrollableCalendarView: View {
         ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) { // Standard spacing for all items
                         ForEach(0..<30, id: \.self) { offset in
-                            let date = Calendar.current.date(byAdding: .day, value: offset, to: Date())!
+                            let date = Calendar.current.date(byAdding: .day, value: offset, to: exerciseLog.firstDate())!
                             
                             DateCircleView(date: date, isSelected: isDate(date, equalTo: dateManager.selectedDate), exerciseLog: exerciseLog)
                                 .onTapGesture {
@@ -47,6 +47,7 @@ struct ScrollableCalendarView: View {
         return calendar.isDate(date1, inSameDayAs: date2)
     }
 }
+
 func normalizedDate(from date: Date) -> Date {
     let calendar = Calendar.current
     let components = calendar.dateComponents([.year, .month, .day], from: date)
